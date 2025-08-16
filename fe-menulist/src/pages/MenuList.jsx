@@ -18,7 +18,7 @@ function MenuList(){
 
  const addToCart = (id) => {
     setCart(prev => {
-      const item = menuList.find(m => m.id === id);
+      const item = menu.find(m => m.id === id);
       const existing = prev.find(c => c.id === id);
       if (existing) {
         return prev.map(c => c.id === id ? { ...c, qty: c.qty + 1 } : c);
