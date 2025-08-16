@@ -5,7 +5,7 @@ function Cart({cartItems, onCheckout}) {
       <h3>Cart</h3>
       {cartItems.map(c => (
         <div key={c.id}>
-    {c.name} ({c.qty}x) - {c.price * c.qty} IDR
+    {c.category} {c.name} ({c.qty}x) - {c.price * c.qty} IDR
     </div>
       ))}
       <p>Total: Rp {total}</p>

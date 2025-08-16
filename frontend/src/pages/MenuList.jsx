@@ -28,9 +28,6 @@ function MenuList(){
 	]
   const [cart, setCart] = useState([]);
 
-  const filteredMenu = filter === "Semua" ? menuList : menuList.filter(item => item.category === filter);
-
-  const cartItem = cart.map((item) => item)
 
  const addToCart = (id) => {
     setCart(prev => {
@@ -58,28 +55,33 @@ function MenuList(){
   };
 
   const categories = ["Semua", "KARAAGE", "OPPA", "PIZZA"];
-  
+
 	return(
 		<div>
-      <nav>
+      <nav className="flex justify-center">
         {categories.map(cat => (
-        <Button key={cat} onClick={() => setFilter(cat)}>
+        <Button 
+          key={cat} 
+          onClick={() => setFilter(cat)}
+          buttonType="primary"
+          isActive={filter === cat}>
         {cat}
         </Button>
     ))}
       </nav>
-      <div>
+      <section className="mt-4 m-4">
         {menuList.filter(item => filter === "Semua" || item.category === filter)
         .map((item) => (
           <MenuItem
             key={item.id}
             item={item}
+            isFilterOn={filter !== "Semua"}
             onAdd={addToCart}
             onRemove={removeFromCart}
             quantity={cart.find(c => c.id === item.id)?.qty || 0}
           />
         ))}
-      </div>
+      </section>
       <Cart cartItems={cart} onCheckout={checkout} />
     </div>
 	)
