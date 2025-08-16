@@ -4,7 +4,7 @@ function Button({ children, onClick, buttonType, isActive}) {
     if (buttonType === "primary") {
         return (
             <button 
-            className={`m-2 w-25 font-bold py-1 px-2 rounded ${
+            className={`m-2 w-23 font-bold py-1 px-2 rounded ${
                 isActive
                     ? "bg-blue-700 text-white"
                     : "bg-blue-400 hover:bg-gray-300 text-black"
@@ -19,10 +19,10 @@ function Button({ children, onClick, buttonType, isActive}) {
     if (buttonType === "secondary") {
         return (
         <button
-            className={`m-2 w-13 h-13 font-bold py-1 px-2 rounded ${
+            className={`m-2 w-12 h-10 font-bold py-1 px-2 rounded ${
                 isActive
                     ? "bg-blue-500 text-white"
-                    : "bg-gray-200 hover:bg-blue-300 text-black"
+                    : "bg-gray-200 hover:bg-blue-300 active:bg-blue-400 text-black"
             }`}
             onClick={onClick}
         >

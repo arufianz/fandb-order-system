@@ -1,3 +1,5 @@
+import Button from "../components/Button";
+
 function Cart({cartItems, onCheckout}) {
  const total = cartItems.reduce((sum, item) => sum + item.price * item.qty, 0);
   return (
@@ -9,7 +11,10 @@ function Cart({cartItems, onCheckout}) {
     </div>
       ))}
       <p>Total: Rp {total}</p>
-      <button onClick={onCheckout}>Checkout</button>
+      <Button 
+      onClick={onCheckout}
+      buttonType={"primary"}
+        >Checkout</Button>
     </div>
   );
 }
