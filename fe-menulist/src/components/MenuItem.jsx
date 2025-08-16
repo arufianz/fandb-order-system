@@ -15,7 +15,7 @@ function MenuItem({ item, onAdd, onRemove, quantity, isFilterOn}) {
     <li className="grid grid-cols-3 gap-1 ">
       	<p className="my-auto text-sm">{category} {item.name} </p>
 		<span className="ml-5 my-auto text-sm text-left">Rp. {item.price.toLocaleString("id-ID")}</span>
-		<div className= "flex justify-end mr-1 my-auto text-sm">
+		<div className= "flex justify-end my-auto text-sm">
 			<Button onClick={() => onRemove(item.id)} qty={quantity} buttonType="secondary">-</Button>
       		{/* <span className="my-auto">{quantity}</span> */}
       		<Button onClick={() => onAdd(item.id)} buttonType="secondary-1">{addButton}</Button>
