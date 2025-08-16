@@ -69,7 +69,7 @@ function MenuList(){
         </Button>
     ))}
       </nav>
-      <section className="mt-4 m-4">
+      <section className="mt-4 m-4 grid grid-rows-1 gap-3">
         {menuList.filter(item => filter === "Semua" || item.category === filter)
         .map((item) => (
           <MenuItem
