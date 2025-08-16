@@ -57,7 +57,7 @@ function MenuList(){
   const categories = ["Semua", "KARAAGE", "OPPA", "PIZZA"];
 
 	return(
-		<div className="grid place-items-center">
+		<div className="grid place-items-center min-h-screen">
       <nav className="flex justify-center">
         {categories.map(cat => (
         <Button 
