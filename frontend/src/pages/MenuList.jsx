@@ -1,31 +1,18 @@
 import Button from "../components/Button"
 import MenuItem from "../components/MenuItem"
 import Cart from "./Cart"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function MenuList(){
   const [filter, setFilter] = useState("Semua");
+  const [menu, setMenu] = useState([]);
 
-	const menuList = [
-		{ id:1, category: "KARAAGE", name: "Chicken Small", price: 8500},
-    { id:2, category: "KARAAGE", name: "Chicken Jumbo", price: 12000 },
-    { id:4, category: "KARAAGE", name: "Skin Small", price: 8500 },
-    { id:3, category: "KARAAGE", name: "Skin Jumbo", price: 12000 },
-    { id:5, category: "KARAAGE", name: "Mushroom Small", price: 8500 },
-    { id:6, category: "KARAAGE", name: "Mushroom Jumbo", price: 12000 },
-    { id:7, category: "KARAAGE", name: "Nugget Small", price: 8500 },
-    { id:8, category: "KARAAGE", name: "Nugget Jumbo", price: 12000 },
-    { id:9, category: "OPPA", name: "Original", price: 10000  },
-    { id:10, category: "OPPA", name: "Blueberry", price: 10000 },
-    { id:11, category: "OPPA", name: "Cokelat", price: 10000  },
-    { id:12, category: "OPPA", name: "Matcha", price: 12000  },
-    { id:13, category: "OPPA", name: "Tiramisu", price: 12000  },
-    { id:14, category: "PIZZA", name: "Mushroom Corn", price: 15000,  },
-    { id:15, category: "PIZZA", name: "Paprika Mushroom", price: 15000,  },
-    { id:16, category: "PIZZA", name: "Pepperoni Mushroom", price: 17000,  },
-    { id:17, category: "PIZZA", name: "Paprika Cheese", price: 15000, },
-    { id:18, category: "PIZZA", name: "Sausage Corn", price: 17000  },
-	]
+  useEffect(() => {
+    fetch('http://localhost:5000/menu')
+      .then(res => res.json())
+      .then(data => setMenu(data));
+  })
+  
   const [cart, setCart] = useState([]);
 
 
@@ -57,7 +44,7 @@ function MenuList(){
   const categories = ["Semua", "KARAAGE", "OPPA", "PIZZA"];
 
 	return(
-		<div className="grid place-items-center min-h-screen">
+		<div className="flex flex-col min-w-screen justify-center">
       <nav className="flex justify-center">
         {categories.map(cat => (
         <Button 
@@ -69,8 +56,8 @@ function MenuList(){
         </Button>
     ))}
       </nav>
-      <section className="mt-4 m-4 grid max-w-2xl grid-rows-1 gap-3">
-        {menuList.filter(item => filter === "Semua" || item.category === filter)
+      <section className="mt-4 m-4  grid max-w-2xl grid-rows-1 gap-3">
+        {menu.filter(item => filter === "Semua" || item.category === filter)
         .map((item) => (
           <MenuItem
             key={item.id}

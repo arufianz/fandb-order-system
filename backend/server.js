@@ -1,8 +1,8 @@
-import express from 'express';
-import cors from 'cors';
+const express = require('express');
+const cors = require('cors');
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 //Midlleware
 app.use(cors());
@@ -31,6 +31,8 @@ const menuList = [
 	]
 
 //Routes
-app.get('/menu', (req, res) => res.json(menuList));
+app.get('/menu', (req, res) =>
+    res.json(menuList));
 
+//Server
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
