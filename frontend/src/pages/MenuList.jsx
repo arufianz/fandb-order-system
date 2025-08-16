@@ -8,11 +8,11 @@ function MenuList(){
   const [menu, setMenu] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/menu')
+    fetch('https://fandb-order-system.onrender.com/menu')
       .then(res => res.json())
       .then(data => setMenu(data));
-  })
-  
+  }, []);
+
   const [cart, setCart] = useState([]);
 
 
