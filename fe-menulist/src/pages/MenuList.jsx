@@ -7,8 +7,15 @@ function MenuList(){
   const [filter, setFilter] = useState("Semua");
   const [menu, setMenu] = useState([]);
 
+  const [time, setTime] = useState();
   useEffect(() => {
-    fetch('https://fandb-order-system.onrender.com/menu')
+    fetch(`${import.meta.env.VITE_API_URL}/time`)
+      .then(res => res.json())
+      .then(data => setTime(data));
+  });
+
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL}/menu`)
       .then(res => res.json())
       .then(data => setMenu(data));
   }, []);
@@ -69,6 +76,7 @@ function MenuList(){
           />
         ))}
       </section>
+      <p>{time}</p>
       <Cart cartItems={cart} onCheckout={checkout} />
     </div>
 	)

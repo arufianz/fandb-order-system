@@ -4,6 +4,7 @@ const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+const time = new Date();
 //Midlleware
 app.use(cors());
 app.use(express.json());
@@ -33,6 +34,11 @@ const menuList = [
 //Routes
 app.get('/menu', (req, res) =>
     res.json(menuList));
+
+app.get('/time', (req, res) =>
+    res.json(time.toLocaleDateString("id-ID") + "  " + time.toLocaleTimeString("id-ID")));
+
+
 
 //Server
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

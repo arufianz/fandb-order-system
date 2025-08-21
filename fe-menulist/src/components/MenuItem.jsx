@@ -4,7 +4,6 @@ function MenuItem({ item, onAdd, onRemove, quantity, isFilterOn}) {
 
 	const category = isFilterOn ? "" : item.category;
 	let addButton = "+";
-	let removeButton = "";
 
 	if (quantity !== 0) {
 		addButton = quantity;
